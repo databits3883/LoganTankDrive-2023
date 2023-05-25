@@ -78,27 +78,33 @@ public class Robot extends TimedRobot {
       m_robotDrive.arcadeDrive(0f, m_rotController.calculate(Math.toDegrees(Math.atan2(input.y, input.x))));
     }*/
     
-    if (m_stick.getTrigger()){
-      m_launchMotor.set(launchMotorSpeed);
-      if (launchMotorTimer <= 215) launchMotorTimer++;
-    }
-    else{
-      m_launchMotor.set(0);
-      if (launchMotorTimer > 0) launchMotorTimer--;
-    }
-//Checks if launcher button is pressed and launch motor is up to speed before staging
-    if ((m_stick.getTrigger()) && (m_stick.getRawButton(2)) && (launchMotorTimer > 215)){
-      m_stageMotor.set(1);
-    }
-    else{
-      m_stageMotor.set(0);
-    }
+    
 
     if (m_overrideStick.getTrigger()){
+      //Launch motor button 3, Stage motor button 2 
+      //TODO: Move stage and launch code here
       m_robotDrive.arcadeDrive(-m_overrideStick.getY(), -m_overrideStick.getX());
     }
     else{
       m_robotDrive.arcadeDrive(-m_stick.getY()*(getThrottle()), -m_stick.getX());
+
+      if (m_stick.getTrigger()){
+        m_launchMotor.set(launchMotorSpeed);
+        if (launchMotorTimer <= 215) launchMotorTimer++;
+      }
+      else{
+        m_launchMotor.set(0);
+        if (launchMotorTimer > 0) launchMotorTimer--;
+      }
+      //Checks if launcher button is pressed and launch motor is up to speed before staging
+      if ((m_stick.getTrigger()) && (m_stick.getRawButton(2)) && (launchMotorTimer > 215)){
+        m_stageMotor.set(1);
+      }
+      else{
+        m_stageMotor.set(0);
+      }
+  
+     
     }
 
 
