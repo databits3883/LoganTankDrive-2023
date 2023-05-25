@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
       m_launchMotor.set(0);
       if (launchMotorTimer > 0) launchMotorTimer--;
     }
-
+//Checks if launcher button is pressed and launch motor is up to speed before staging
     if ((m_stick.getTrigger()) && (m_stick.getRawButton(2)) && (launchMotorTimer > 215)){
       m_stageMotor.set(1);
     }
