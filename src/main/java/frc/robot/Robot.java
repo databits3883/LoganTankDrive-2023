@@ -88,7 +88,6 @@ public class Robot extends TimedRobot {
     }
 
     if ((m_stick.getTrigger()) && (m_stick.getRawButton(2)) && (launchMotorTimer > 215)){
-      System.out.println("Launch motor timer = " + launchMotorTimer);
       m_stageMotor.set(1);
     }
     else{
