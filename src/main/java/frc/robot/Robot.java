@@ -8,12 +8,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
-
-import javax.lang.model.util.ElementScanner6;
-
-//import com.ctre.phoenix.sensors.Pigeon2;
 
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
