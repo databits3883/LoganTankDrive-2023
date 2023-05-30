@@ -81,9 +81,25 @@ public class Robot extends TimedRobot {
     
 
     if (m_overrideStick.getTrigger()){
-      //Launch motor button 3, Stage motor button 2 
-      //TODO: Move stage and launch code here
       m_robotDrive.arcadeDrive(-m_overrideStick.getY(), -m_overrideStick.getX());
+
+      //Launch motor button 3, Stage motor button 2 
+      if (m_overrideStick.getRawButton(3)){
+        m_launchMotor.set(launchMotorSpeed);
+        if (launchMotorTimer <= 215) launchMotorTimer++;
+      }
+      else{
+        m_launchMotor.set(0);
+        if (launchMotorTimer > 0) launchMotorTimer--;
+      }
+      //Checks if launcher button is pressed and launch motor is up to speed before staging
+      if ((m_overrideStick.getRawButton(3)) && (m_overrideStick.getRawButton(2)) && (launchMotorTimer > 215)){
+        m_stageMotor.set(1);
+      }
+      else{
+        m_stageMotor.set(0);
+      }
+
     }
     else{
       m_robotDrive.arcadeDrive(-m_stick.getY()*(getThrottle()), -m_stick.getX());
